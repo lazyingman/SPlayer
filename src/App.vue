@@ -170,7 +170,7 @@ onMounted(() => {
 
   // 公告
   if (annShow) {
-    $notification["info"]({
+    $notification["success"]({
       content: annTitle,
       meta: annContene,
       duration: annDuration,

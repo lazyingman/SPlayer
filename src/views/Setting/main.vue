@@ -107,13 +107,6 @@
     </n-card>
     <n-card class="set-item">
       <div class="name">
-        {{ $t("setting.bottomClick") }}
-        <span class="tip">{{ $t("setting.bottomClickTip") }}</span>
-      </div>
-      <n-switch v-model:value="bottomClick" :round="false" />
-    </n-card>
-    <n-card class="set-item">
-      <div class="name">
         {{ $t("setting.songVolumeFade") }}
         <span class="tip">{{ $t("setting.songVolumeFadeTip") }}</span>
       </div>
@@ -237,7 +230,6 @@ const {
   useUnmServer,
   memoryLastPlaybackPosition,
   language,
-  bottomClick,
 } = storeToRefs(setting);
 
 // 国际化

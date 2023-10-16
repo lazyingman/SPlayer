@@ -83,18 +83,14 @@ export default {
     qr: "QR",
     phone: "Captcha",
     email: "Email",
-    getCode: "Get the verification code",
-    getCodeAgain: "Try again",
-    codeSuccess: "Verification code sent successfully",
-    codeError: "Failed to send verification code, please try again",
-    canNotUse: "This login mode is not secure and is temporarily disabled",
+    canNotUse: "This login method is temporarily unavailable",
     loggedIn: "Already logged in, please don't log in again",
-    loginStatus1: "Please open APP and scan the code to login",
-    loginStatus2: "The current QR code is invalid, please scan it again",
-    loginStatus3: "Scan successfully, please confirm login in the client",
-    loginStatus4: "Login successfully",
-    loginStatus5: "Login error, please try again",
-    loginStatus6: "Login QR code generation failed",
+    qrText1: "Please open APP and scan the code to login",
+    qrText2: "The current QR code is invalid, please scan it again",
+    qrText3: "Scan successfully, please confirm login in the client",
+    qrText4: "Login successfully",
+    qrText5: "Login error, please try again",
+    qrText6: "Login QR code generation failed",
   },
   // Menu
   menu: {
@@ -374,7 +370,5 @@ export default {
     lyricsBlur: "Lyric Blur",
     lyricsBlurTip:
       "Blur lyrics other than the currently playing ones, experimental feature",
-    bottomClick: "Bottomclick to expand Player ",
-    bottomClickTip: "It may cause mistouch, please open with caution ",
   },
 };

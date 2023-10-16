@@ -4,7 +4,6 @@
       v-show="music.getPlaylists[0] && music.showPlayBar"
       class="player"
       content-style="padding: 0"
-      @click.stop="setting.bottomClick ? music.setBigPlayerState(true) : null"
     >
       <div class="slider">
         <span>{{ music.getPlaySongTime.songTimePlayed }}</span>
@@ -93,22 +92,13 @@
                         music.getPlaySongLyricIndex != -1 &&
                         music.getPlaySongLyric?.lrc[0]
                       "
-                      class="lrc"
-                    >
-                      <Transition name="fade" mode="out-in">
-                        <n-text
-                          class="text-hidden"
-                          :key="music.getPlaySongLyricIndex"
-                          :depth="3"
-                        >
-                          {{
-                            music.getPlaySongLyric.lrc[
-                              music.getPlaySongLyricIndex
-                            ]?.content
-                          }}
-                        </n-text>
-                      </Transition>
-                    </n-text>
+                      class="lrc text-hidden"
+                      :depth="3"
+                      v-html="
+                        music.getPlaySongLyric.lrc[music.getPlaySongLyricIndex]
+                          .content
+                      "
+                    />
                     <AllArtists
                       v-else
                       class="text-hidden"
@@ -217,7 +207,7 @@
                     ? ShuffleOne
                     : PlayOnce
                 "
-                @click.stop="music.setPlaySongMode()"
+                @click="music.setPlaySongMode()"
               />
             </div>
           </n-dropdown>
@@ -233,6 +223,7 @@
             </template>
             {{ $t("general.name.playlists") }}
           </n-popover>
+
           <div class="volume">
             <n-popover
               trigger="hover"
@@ -411,15 +402,16 @@ const getMusicNumUrlData = (id) => {
     .then((res) => {
       if (res.code === 200) {
         const songUrl = res.data.url.replace(/^http:/, "");
+        console.log("res.data.proxyUrl",res.data.proxyUrl)
         // 匹配酷我域名
-        const pattern = /kuwo\.cn/i;
-        if (pattern.test(songUrl) && res.data?.proxyUrl) {
-          player.value = createSound(res.data.proxyUrl);
-          console.log("替换成功：" + res.data.proxyUrl);
-        } else {
+        // const pattern = /kuwo\.cn/i;
+        // if (pattern.test(songUrl) && res.data?.proxyUrl) {
+        //   player.value = createSound(res.data.proxyUrl);
+        //   console.log("替换成功：" + res.data.proxyUrl);
+        // } else {
           player.value = createSound(songUrl);
           console.log("替换成功：" + songUrl);
-        }
+        // }
       }
     })
     .catch((err) => {
